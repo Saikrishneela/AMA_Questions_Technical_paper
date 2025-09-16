@@ -1,0 +1,124 @@
+# AMA Technical Q\&A 
+
+## 1. What is a Primary Key?
+
+A **primary key** is a unique identifier for each record in a database table. It ensures that:
+
+* Each record is unique (no duplicates).
+* The key cannot be `NULL`.
+
+Example in SQL:
+
+sql
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT
+);
+
+
+Here, `StudentID` is the primary key.
+
+---
+
+## 2. What is a Lambda Function?
+
+A **lambda function** in Python is an anonymous (nameless) function defined using the `lambda` keyword. It is typically used for short, one-time operations.
+
+Example:
+
+```python
+square = lambda x: x ** 2
+print(square(5))  # Output: 25
+```
+
+---
+
+## 3. What is a Static Method in Python?
+
+A **static method** is a method inside a class that does not access or modify class or instance-specific data. It is defined using the `@staticmethod` decorator.
+
+Example:
+
+```python
+class Math:
+    @staticmethod
+    def add(a, b):
+        return a + b
+
+print(Math.add(5, 3))  # Output: 8
+```
+
+---
+
+## 4. What is a Generator in Python?
+
+A **generator** is a function that yields values one at a time using the `yield` keyword instead of returning them all at once. It is memory-efficient because it generates values on demand.
+
+Example:
+
+```python
+def generate_numbers(n):
+    for i in range(n):
+        yield i
+
+for num in generate_numbers(5):
+    print(num)
+```
+
+Output:
+
+```
+0
+1
+2
+3
+4
+```
+
+---
+
+## 5. Explain ACID Properties
+
+ACID properties ensure reliable database transactions:
+
+* **A (Atomicity):** All operations in a transaction complete successfully or none at all.
+* **C (Consistency):** The database moves from one valid state to another.
+* **I (Isolation):** Concurrent transactions do not affect each other.
+* **D (Durability):** Once a transaction is committed, it remains permanent even after system failures.
+
+---
+
+## 6. What is an Object in Python?
+
+An **object** is an instance of a class in Python. It represents real-world entities and encapsulates data (attributes) and behavior (methods).
+
+Example:
+
+```python
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+my_car = Car("Tesla", "Model 3")
+print(my_car.brand)  # Output: Tesla
+```
+
+---
+
+## 7. What are slef closing Tags in HTML?
+
+<br />   <!-- line break -->
+
+<img src="car.jpg" alt="Car" />   <!-- image -->
+
+<hr />   <!-- horizontal line -->
+
+<input type="text" />   <!-- input field -->
+
+<meta charset="UTF-8" /> <!-- metadata -->
+
+<link rel="stylesheet" href="style.css" /> <!-- CSS link -->
+
+
