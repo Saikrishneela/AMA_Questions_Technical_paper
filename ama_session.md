@@ -1,115 +1,91 @@
-# AMA Questions and Answers
 
-### What does the `chmod` command do in Linux?
+# Advanced JavaScript AMA Questions & Answers
 
-`chmod` is used to change file permissions in Linux.
+## 1.How would you implement your own version of Array.map() or Array.filter()?
 
-* Permissions: `r` (read), `w` (write), `x` (execute)
+**Array.map():** Iterates over each element, applies a function, and returns a new array with transformed values.  
 
-**Example:**
+**Array.filter():** Iterates over each element, applies a condition, and returns a new array with only values that pass.  
 
-```bash
-chmod 755 script.sh
-```
+👉 **Example:**  
+- `map` → `[1,2,3]` → `[2,4,6]` (double each number).  
+- `filter` → `[1,2,3,4]` → `[2,4]` (keep only evens).  
 
-Owner: read, write, execute; Group: read, execute; Others: read, execute.
+---
 
-### How do you list hidden files in a directory?
+## 2.What problem does async/await solve compared to plain promises or callbacks?
 
-Use the `ls -a` command.
+`async/await` makes asynchronous code look like synchronous code, improving **readability** and **maintainability**.  
 
-**Example:**
+- With **callbacks** → nested “callback hell.”  
+- With **promises** → long `.then().catch()` chains.  
+- With **async/await** → simpler, linear flow using `try/catch`.  
 
-```bash
-ls -a
-```
+---
 
-Shows hidden files like `.gitignore`, `.env`.
+## 3.Can you explain the difference between Promise.all, Promise.any, and Promise.race with examples?
 
-### What’s the difference between `git merge` and `git rebase`?
+- **Promise.all**: Waits for all promises to succeed, rejects if one fails.  
+- **Promise.any**: Returns the first successful promise, ignores rejections.  
+- **Promise.race**: Returns the result of the first settled promise (fulfilled or rejected).  
 
-* `git merge`: Combines branches, keeps history, creates a merge commit.
-* `git rebase`: Moves commits on top of another branch, rewrites history (linear).
+👉 **Example:**  
+- Loading multiple images → `Promise.all`.  
+- Fetching from multiple servers, use the first good response → `Promise.any`.  
+- Timeout mechanism → `Promise.race`.  
 
-**Example:**
+---
 
-```bash
-git checkout feature
-git merge main
-# or
- git rebase main
-```
+## 4.What are the possible states of a promise, and how do they transition?
 
-### How do you undo the last commit but keep the changes locally?
+A promise has three states:  
 
-Use `git reset`.
+1. **Pending** → initial state.  
+2. **Fulfilled** → operation completed successfully.  
+3. **Rejected** → operation failed with an error.  
 
-**Example:**
+Once a promise is fulfilled or rejected, it becomes **settled** and cannot change state again.  
 
-```bash
-git reset --soft HEAD~1   
-git reset --mixed HEAD~1  
-```
+---
 
-### What’s the difference between `<link>` and `<script>` tags?
+## 5.Can you give an example of how closures are used to implement data privacy or encapsulation?
 
-* `<link>`: Links external resources (CSS, icons, etc.)
-* `<script>`: Loads and executes JavaScript
+Closures allow variables to remain private inside a function scope while exposing controlled access.  
 
-**Example:**
+👉 **Example:**  
+A “password manager” function can hide the actual password variable but expose `getPassword` and `setPassword` methods.  
+This prevents direct modification while still allowing controlled interaction.  
 
-```html
-<link rel="stylesheet" href="styles.css">
-<script src="app.js"></script>
-```
+---
 
-### What are the differences between block-level and inline elements in HTML?
+## 6.What is a closure in JavaScript, and why are they useful?
 
-* Block-level: Full width, starts on a new line (`<div>`, `<p>`)
-* Inline: Only as much width as needed, does not start on a new line (`<span>`, `<a>`)
+A closure is when an inner function “remembers” variables from its outer scope, even after the outer function has finished execution.  
 
-**Example:**
+👉 **Useful for:**  
+- Data privacy (private variables).  
+- State management (like counters).  
+- Function factories (customized behavior).  
 
-```html
-<div>This is block</div>
-<span>This is inline</span>
-```
+---
 
-### What is the difference between `em`, `rem`, and `px` units in CSS?
+## 7.How would you handle errors inside an async/await function?
 
-* `px`: Fixed size (absolute unit)
-* `em`: Relative to parent’s font size
-* `rem`: Relative to root (`html`) font size
+By wrapping `await` calls in a **try/catch** block.  
 
-**Example:**
+- `try` → contains the awaited operations.  
+- `catch` → handles errors like network failures.  
 
-```css
-html { font-size: 16px; }
-p { font-size: 2em; }   
-h1 { font-size: 2rem; } 
-```
+This avoids chaining `.catch()` and makes error handling cleaner.  
 
-### How does the CSS `z-index` property work?
+---
 
-`z-index` sets the stacking order of positioned elements (`relative`, `absolute`, `fixed`, `sticky`). Higher value appears on top.
+## 8.What is the difference between call, apply, and bind in JavaScript?
 
-**Example:**
+All three are used to control the value of `this` when invoking functions.  
 
-```css
-.box1 { position: absolute; z-index: 1; }
-.box2 { position: absolute; z-index: 10; } 
-```
+- **call**: Invokes immediately, arguments passed individually.  
+- **apply**: Invokes immediately, arguments passed as an array.  
+- **bind**: Returns a new function with `this` permanently bound, does not invoke immediately.  
 
-### What is the difference between `null` and `undefined` in JavaScript?
-
-* `undefined`: Variable declared but not assigned
-* `null`: Explicitly set to "no value"
-
-**Example:**
-
-```javascript
-let a;
-console.log(a); 
-let b = null;
-console.log(b); 
-```
+👉 **Example:** Borrowing a method from one object and using it on another.  
